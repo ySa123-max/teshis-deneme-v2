@@ -1,0 +1,2812 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Türkiye Karınca Altfamilyaları - Bilimsel Rehber & Teşhis Sistemi 🐜</title>
+    <style>
+        /* ==================== GLOBAL RESET & VARIABLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Doğa Temalı Renk Paleti */
+            --primary-green: #2d5016;
+            --primary-light: #4a7c2c;
+            --primary-lighter: #6ba83e;
+            --secondary-brown: #8b6f47;
+            --accent-orange: #d97706;
+            --accent-yellow: #fbbf24;
+            
+            /* Arka Plan Renkleri */
+            --bg-cream: #fef3c7;
+            --bg-light: #fffef0;
+            --bg-white: #ffffff;
+            --card-bg: #ffffff;
+            
+            /* Text Renkleri */
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            
+            /* Gölge Efektleri */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        /* ==================== TYPOGRAPHY ==================== */
+        body {
+            font-family: 'Segoe UI', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--primary-green);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--primary-light);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary-lighter);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-medium);
+        }
+
+        /* ==================== LAYOUT CONTAINERS ==================== */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* ==================== HEADER & NAVIGATION ==================== */
+        .header {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.95) 0%, rgba(74, 124, 44, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            padding: 30px 0;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid var(--accent-yellow);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            animation: antWalk 3s ease-in-out infinite;
+        }
+
+        .logo-text h1 {
+            color: white;
+            margin: 0;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .logo-text p {
+            color: var(--accent-yellow);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-yellow);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: var(--accent-orange);
+            border-color: var(--accent-yellow);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(254, 243, 199, 0.9) 100%);
+            border-radius: var(--radius-xl);
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            animation: rotateGradient 20s linear infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-lighter) 100%);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ==================== GUIDE SECTION ==================== */
+        .guide-intro {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 40px;
+        }
+
+        .guide-intro h2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .guide-intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid var(--accent-orange);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .warning-box-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ==================== TERMINOLOGY SECTION ==================== */
+        .terminology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .term-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .term-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-yellow));
+            transform: scaleX(0);
+            transition: var(--transition-normal);
+        }
+
+        .term-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-lighter);
+        }
+
+        .term-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .term-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .term-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-lighter));
+            padding: 15px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .term-title {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin: 0;
+        }
+
+        .term-latin {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .term-description {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .term-image-container {
+            margin-top: 20px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            background: #f3f4f6;
+        }
+
+        .term-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition-normal);
+        }
+
+        .term-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #9ca3af;
+            border-radius: var(--radius-md);
+        }
+
+        /* ==================== SUBFAMILY CARDS ==================== */
+        .subfamily-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 40px;
+        }
+
+        .subfamily-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-lighter);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .subfamily-title-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .subfamily-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            background: var(--bg-cream);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .subfamily-name-group h3 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--primary-green);
+        }
+
+        .subfamily-latin {
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .rarity-badge {
+            padding: 10px 20px;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .rarity-common {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+        }
+
+        .rarity-moderate {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+        }
+
+        .rarity-rare {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+        }
+
+        .subfamily-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--primary-lighter);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            background: white;
+            border-color: var(--primary-lighter);
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .genera-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: var(--radius-md);
+        }
+
+        .genera-title {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .genera-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .genus-tag {
+            background: white;
+            color: var(--primary-green);
+            padding: 10px 15px;
+            border-radius: var(--radius-lg);
+            font-style: italic;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+            border: 2px solid transparent;
+        }
+
+        .genus-tag:hover {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--accent-yellow);
+            transform: scale(1.05);
+        }
+
+        .subfamily-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .subfamily-image-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+        }
+
+        .subfamily-image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ==================== DIAGNOSIS SYSTEM ==================== */
+        .diagnosis-container {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 50px;
+            box-shadow: var(--shadow-xl);
+            margin-top: 40px;
+        }
+
+        .diagnosis-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .diagnosis-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .diagnosis-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .progress-container {
+            margin-bottom: 40px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-medium);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, #e5e7eb 0%, #d1d5db 100%);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-lighter) 50%, var(--accent-yellow) 100%);
+            border-radius: var(--radius-lg);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .question-wrapper {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .question-wrapper.active {
+            display: block;
+            animation: fadeInScale 0.6s ease forwards;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 3px solid var(--primary-lighter);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .question-header {
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 8px 20px;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .question-title {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .question-description {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .question-help {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+        }
+
+        .question-help-title {
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reference-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .reference-image-card {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            background: #f3f4f6;
+        }
+
+        .reference-image-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .reference-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .option-card {
+            background: white;
+            border: 3px solid #e5e7eb;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 124, 44, 0.05) 0%, rgba(107, 168, 62, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-normal);
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-lighter);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .option-card:hover::before {
+            opacity: 1;
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-green);
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            box-shadow: 0 0 0 4px rgba(74, 124, 44, 0.2);
+        }
+
+        .option-card.selected::before {
+            opacity: 0;
+        }
+
+        .option-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .option-text h4 {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin: 0 0 5px 0;
+        }
+
+        .option-text p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .option-checkmark {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .option-card.selected .option-checkmark {
+            display: flex;
+            animation: checkmarkPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 18px 30px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .nav-btn-prev {
+            background: white;
+            color: var(--text-medium);
+            border: 2px solid #e5e7eb;
+        }
+
+        .nav-btn-prev:hover:not(:disabled) {
+            background: #f3f4f6;
+            border-color: var(--primary-lighter);
+            transform: translateX(-3px);
+        }
+
+        .nav-btn-next {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-lighter) 100%);
+            color: white;
+        }
+
+        .nav-btn-next:hover:not(:disabled) {
+            transform: translateX(3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ==================== RESULT SCREEN ==================== */
+        .result-container {
+            display: none;
+            text-align: center;
+        }
+
+        .result-container.show {
+            display: block;
+            animation: resultAppear 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .result-confetti {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: confettiFall 1s ease;
+        }
+
+        .result-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .result-subfamily {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--accent-orange);
+            font-style: italic;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: left;
+            margin: 30px 0;
+            border: 3px solid var(--primary-lighter);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .result-section {
+            margin-bottom: 30px;
+        }
+
+        .result-section h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .result-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .result-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .result-genera {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .result-genus {
+            background: var(--primary-green);
+            color: white;
+            padding: 12px 16px;
+            border-radius: var(--radius-lg);
+            font-style: italic;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+        }
+
+        .result-genus:hover {
+            background: var(--primary-lighter);
+            transform: scale(1.05);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-text {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .footer-credits {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes antWalk {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateX(5px) rotate(5deg);
+            }
+            75% {
+                transform: translateX(-5px) rotate(-5deg);
+            }
+        }
+
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes checkmarkPop {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes resultAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0) scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .terminology-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subfamily-images {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .diagnosis-container {
+                padding: 30px 20px;
+            }
+            
+            .question-card {
+                padding: 25px;
+            }
+            
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            
+            .subfamily-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .logo-icon {
+                font-size: 2rem;
+            }
+            
+            .term-card {
+                padding: 20px;
+            }
+            
+            .subfamily-number {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+        }
+
+        /* ==================== UTILITY CLASSES ==================== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mt-40 {
+            margin-top: 40px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ==================== SCROLL BEHAVIOR ==================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ==================== LOADING STATE ==================== */
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(74, 124, 44, 0.2);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🐜</div>
+                <div class="logo-text">
+                    <h1>Karınca Rehberi</h1>
+                    <p>Türkiye Altfamilyaları</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#guide" class="nav-link active">📖 Rehber</a></li>
+                    <li><a href="#diagnosis" class="nav-link">🔍 Teşhis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTAINER ==================== -->
+    <div class="main-container">
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">🐜 Türkiye'deki Karınca Altfamilyaları</h1>
+                <p class="hero-subtitle">Bilimsel Teşhis Rehberi ve İnteraktif Tanı Sistemi</p>
+                <p class="hero-description">
+                    Bu rehber, Türkiye'de bulunan 7 karınca altfamilyasını tanımanıza yardımcı olmak için 
+                    hazırlanmıştır. Morfik özellikleri öğrenin, teşhis anahtarını kullanın ve elinizdeki 
+                    karıncanın hangi altfamilyaya ait olduğunu keşfedin!
+                </p>
+                <div class="hero-buttons">
+                    <a href="#guide" class="btn btn-primary">
+                        📚 Rehbere Başla
+                    </a>
+                    <a href="#diagnosis" class="btn btn-secondary">
+                        🔬 Hemen Teşhis Et
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GUIDE SECTION ==================== -->
+        <section id="guide" class="section">
+            <div class="guide-intro">
+                <h2>📖 Rehber Hakkında</h2>
+                <div class="guide-intro-text">
+                    <p>
+                        Karınca hobisi ile yeni başlayan kişilerin öğrenmek istediği becerilerin başını genelde 
+                        <strong>tür ve cins tespiti</strong> tutuyor. Bunu başarmak için genişten dara doğru ilerleyerek 
+                        öğrenmenizi tavsiye ederim. O yüzden bu rehberde sizlere <strong>altfamilyaları</strong> anlatacağım.
+                    </p>
+                    <p>
+                        Bu sayede elinizdeki karıncaların hangi altfamilyadan olduğunu anlayabilir ve olası cinsleri de 
+                        mümkün olduğunca azaltmış olursunuz. Ayrıca "Tetramorium ve Tapinoma'nın farkı ne?" gibi 
+                        absürt soruların neden açıklanması zor sorular olduğunu da nispeten anlarsınız.
+                    </p>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <span>💡</span> Önemli Bilgi
+                    </div>
+                    <p>
+                        <strong>Formicidae familyası</strong>, 16 altfamilya ve yaklaşık 345 cins ile bizim 
+                        "Karınca" dediğimiz böcekleri içeren bir taksondur. Ülkemizde bu familyaya ait 
+                        <strong>7 altfamilya</strong> bulunuyor.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-box-title">
+                        <span>⚠️</span> Başlamadan Önce
+                    </div>
+                    <p>
+                        Bu rehberde anlatılan altfamilyaların kimisini ömrünüzde göremeyeceksiniz bile muhtemelen. 
+                        Önce temel terimleri öğrenin, sonra yaygın altfamilyalarla pratik yapın. İleri seviye 
+                        altfamilyalar (Dorylinae, Proceratiinae vb.) için önce deneyim kazanmanız önerilir.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ==================== TERMINOLOGY ==================== -->
+            <div class="section">
+                <div class="guide-intro">
+                    <h2>📚 Temel Terminoloji</h2>
+                    <p class="guide-intro-text">
+                        Altfamilyaları ayırt edebilmek için öncelikle bazı temel anatomik yapıları öğrenmeniz gerekiyor. 
+                        Aşağıda her bir terimin detaylı açıklaması ve referans görselleri bulunmaktadır.
+                    </p>
+                </div>
+
+                <div class="terminology-grid">
+                    <!-- TERM 1: PETIOLE & POSTPETIOLE -->
+                    <div class="term-card">
+                        <div class="term-header">
+                            <div class="term-icon">🔗</div>
+                            <div>
+                                <h3 class="term-title">Petiole & Postpetiole</h3>
+                                <p class="term-latin">Bağlantı Parçaları</p>
+                            </div>
+                        </div>
+                        <p class="term-description">
+                            Karınca bedeni temelde 3 parçadan oluşur: <strong>Kafa (Head)</strong>, 
+                            <strong>Thorax (Göğüs)</strong> ve <strong>Abdomen (Karın)</strong>.
+                            <br><br>
+                            Thorax ile Abdomen'i birbirine bağlayan parçaya <strong>"Petiole"</strong> denir. 
+                            Eğer birey ikinci bir bağlantı parçasına sahipse bu ikinci parçaya 
+                            <strong>"Postpetiole"</strong> denir.
+                        </p>
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: petiole_postpetiole_anatomisi.jpg -->
+                            <img src="petiole_postpetiole_anatomisi.jpg" class="term-image">
+
+                            <div class="image-caption">Petiole ve Postpetiole Anatomisi</div>
+                        </div>
+                    </div>
+
+                    <!-- TERM 2: ACIDOPORE -->
+                    <div class="term-card">
+                        <div class="term-header">
+                            <div class="term-icon">💧</div>
+                            <div>
+                                <h3 class="term-title">Asit Poru</h3>
+                                <p class="term-latin">Acidopore</p>
+                            </div>
+                        </div>
+                        <p class="term-description">
+                            Abdomen sonunda bulunan bir asit deliğidir. Ters huni şeklinde bir dizi kıl 
+                            tarafından korunur. <strong>Formicinae altfamilyasına özgüdür</strong> ve bu 
+                            altfamilyanın en karakteristik özelliğidir.
+                            <br><br>
+                            Asit poru sayesinde Formicinae karıncaları formik asit salgılayarak kendilerini 
+                            savunurlar.
+                        </p>
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: asit_poru_acidopore.jpg -->
+                            <img src="asit_poru_acidopore.jpg" class="term-image">
+                            <div class="image-caption">Asit Poru (Acidopore) - Formicinae'ye özgü</div>
+                        </div>
+                    </div>
+
+                    <!-- TERM 3: COCOON -->
+                    <div class="term-card">
+                        <div class="term-header">
+                            <div class="term-icon">🥚</div>
+                            <div>
+                                <h3 class="term-title">Koza</h3>
+                                <p class="term-latin">Cocoon</p>
+                            </div>
+                        </div>
+                        <p class="term-description">
+                            Kimi karınca türlerinin bakteri ve mantarlardan korunmak gibi amaçlarla evrimleştirdiği, 
+                            larvaların pupa evresine geçerken çevrelerine sardığı bir ipek kılıftır.
+                            <br><br>
+                            <strong>Önemli:</strong> Eğer bahsi geçen türün koza örmek gibi bir özelliği yoksa 
+                            veya koza örebilen türün larvası zemine tutunamamışsa pupa evresi kozasız olur. 
+                            Yani "Kozası olmayan bir birey koza örebilen bir türe ait değildir" diyemeyiz.
+                        </p>
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: kozali_kozasiz_pupa.jpg -->
+                            <img src="kozali_kozasiz_pupa.jpg" class="term-image">
+                            <div class="image-caption">Kozalı ve Kozasız Pupa Karşılaştırması</div>
+                        </div>
+                    </div>
+
+                    <!-- TERM 4: ANTENNAL CLUB -->
+                    <div class="term-card">
+                        <div class="term-header">
+                            <div class="term-icon">📡</div>
+                            <div>
+                                <h3 class="term-title">Anten Topuzu</h3>
+                                <p class="term-latin">Antennal Club</p>
+                            </div>
+                        </div>
+                        <p class="term-description">
+                            Karıncaların antenleri anten sapından sonra birçok segment halinde bölünür. 
+                            Fakat bazen her segment aynı değildir, antenin ucuna yaklaştıkça en uçtaki 
+                            birkaç segmentin kalınlıkları değişir.
+                            <br><br>
+                            Bu kalınlığı farklı olan segmentlere <strong>anten topuzları</strong> denir. 
+                            Kimi altfamilyalar bu anten topuzlarına sahipken, kimileri bundan yoksundur.
+                        </p>
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: anten_topuzu_antennal_club.jpg -->
+                            <img src="anten_topuzu_antennal_club.jpg" class="term-image">
+                            <div class="image-caption">Topuzlu ve Topuzsuz Anten Karşılaştırması</div>
+                        </div>
+                    </div>
+
+                    <!-- TERM 5: SPINE -->
+                    <div class="term-card">
+                        <div class="term-header">
+                            <div class="term-icon">⚔️</div>
+                            <div>
+                                <h3 class="term-title">Dikenler</h3>
+                                <p class="term-latin">Spines</p>
+                            </div>
+                        </div>
+                        <p class="term-description">
+                            Bazı karıncaların thoraxlarının <strong>"propodeum"</strong> kısmında bulunan 
+                            kimi zaman ufacık kimi zaman oldukça uzun olan bir çift dikendir.
+                            <br><br>
+                            Dikene sahip olmayan bir karıncanın altfamilyasını anlamak için daha fazla veri 
+                            gereklidir fakat dikeni olan bir karınca çoğunlukla <strong>Myrmicinae 
+                            altfamilyasındandır</strong>.
+                        </p>
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: dikenler_spines.jpg -->
+                            <img src="dikenler_spines.jpg.jpg" class="term-image">
+                            <div class="image-caption">Dikensiz, Kısa Dikenli ve Uzun Dikenli Karşılaştırma</div>
+                        </div>
+                    </div>
+
+                    <!-- TERM 6: ABDOMEN NOTCH -->
+                    <div class="term-card">
+                        <div class="term-header">
+                            <div class="term-icon">✂️</div>
+                            <div>
+                                <h3 class="term-title">Abdomen Çentiği</h3>
+                                <p class="term-latin">Abdominal Notch</p>
+                            </div>
+                        </div>
+                        <p class="term-description">
+                            Abdomenin sonunda bulunan bir yarık veya çentiktir. Bu özellik özellikle 
+                            <strong>Dolichoderinae</strong> altfamilyasında belirgindir ve tanı sırasında 
+                            önemli bir ipucu sağlar.
+                            <br><br>
+                            Petiole gizli olan karıncalarda abdomen çentiğinin varlığı genellikle 
+                            Dolichoderinae'yi işaret eder.
+                        </p>
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: abdomen_centigi.jpg -->
+                            <img src="abdomen_centigi.jpg" class="term-image">
+                            <div class="image-caption">Abdomen Çentiği - Dolichoderinae</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 1: FORMICINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">1</div>
+                        <div class="subfamily-name-group">
+                            <h3>Formicinae</h3>
+                            <p class="subfamily-latin">Formicinae Latreille, 1809</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-common">
+                        ⭐⭐⭐ Çok Yaygın
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    Ülkedeki en yaygın altfamilyalardan birisidir. <strong>Asit poruna sahip tek 
+                    altfamilyadır</strong> ve bu özellik sayesinde kolayca ayırt edilebilir. Tek petioleye 
+                    sahiptirler ve petioleleri genelde belirgindir. Petioleleri oval, üçgen, dikdörtgen, 
+                    kare, beşgen gibi birçok şekilde olabilir.
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <span class="feature-text">Asit poru var (özgü)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">1️⃣</span>
+                        <span class="feature-text">Tek petiole (belirgin)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧵</span>
+                        <span class="feature-text">Çoğu koza örer</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📡</span>
+                        <span class="feature-text">Anten topuzu yok</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">❌</span>
+                        <span class="feature-text">İğne bulundurmaz</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚔️</span>
+                        <span class="feature-text">Bazı türlerde diken var</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: formicinae_petiole.jpg -->
+                            <img src="formicinae_petiole.jpg" class="term-image">
+                            <div class="image-caption">Formicinae Petiole Yapısı</div>
+                        </div>
+                    </div>
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: formicinae_asit_poru.jpg -->
+                            <img src="formicinae_asit_poru.jpg" class="term-image">
+                            <div class="image-caption">Formicinae Asit Poru (Karakteristik)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Formicinae Cinsleri (13 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Camponotus</div>
+                        <div class="genus-tag">Cataglyphis</div>
+                        <div class="genus-tag">Colobopsis</div>
+                        <div class="genus-tag">Formica</div>
+                        <div class="genus-tag">Lasius</div>
+                        <div class="genus-tag">Lepisiota</div>
+                        <div class="genus-tag">Nylanderia</div>
+                        <div class="genus-tag">Paratrechina</div>
+                        <div class="genus-tag">Plagiolepis</div>
+                        <div class="genus-tag">Polyergus</div>
+                        <div class="genus-tag">Prenolepis</div>
+                        <div class="genus-tag">Proformica</div>
+                        <div class="genus-tag">Rossomyrmex</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 2: DOLICHODERINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">2</div>
+                        <div class="subfamily-name-group">
+                            <h3>Dolichoderinae</h3>
+                            <p class="subfamily-latin">Dolichoderinae Forel, 1878</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-moderate">
+                        ⭐⭐ Orta Yaygınlık
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    <em>Tapinoma</em> cinsi dışında bu altfamilyadan olup Türkiye'de yaygın olan pek cins yoktur. 
+                    <strong>Tek petioleye sahiptirler ve petioleleri gizlidir.</strong> Abdomenin ilk tergiti 
+                    genelde petioleyi kapatır bu yüzden petiole hiç yokmuş gibi görünür. <em>Dolichoderus</em> 
+                    gibi bazı cinslerin petioleleri oldukça açıkta ve barizdir.
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">1️⃣</span>
+                        <span class="feature-text">Tek petiole (gizli)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🫥</span>
+                        <span class="feature-text">Petiole abdomen tarafından kapatılır</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">❌</span>
+                        <span class="feature-text">Koza öremez</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🚫</span>
+                        <span class="feature-text">Diken ve iğne yok</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✂️</span>
+                        <span class="feature-text">Abdomen sonunda çentik var</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: dolichoderinae_petiole_gizli.jpg -->
+                            <img src="dolichoderinae_petiole_gizli.jpg" class="term-image">
+                            <div class="image-caption">Dolichoderinae - Gizli Petiole</div>
+                        </div>
+                    </div>
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: dolichoderinae_abdomen_centik.jpg -->
+                            <img src="dolichoderinae_abdomen_centik.jpg" class="term-image">
+                            <div class="image-caption">Dolichoderinae - Abdomen Çentiği</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Dolichoderinae Cinsleri (5 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Bothriomyrmex</div>
+                        <div class="genus-tag">Dolichoderus</div>
+                        <div class="genus-tag">Linepithema</div>
+                        <div class="genus-tag">Liometopum</div>
+                        <div class="genus-tag">Tapinoma</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 3: MYRMICINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">3</div>
+                        <div class="subfamily-name-group">
+                            <h3>Myrmicinae</h3>
+                            <p class="subfamily-latin">Myrmicinae Lepeletier, 1835</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-common">
+                        ⭐⭐⭐ En Kalabalık Altfamilya
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    <strong>Türkiye'nin en kalabalık altfamilyasıdır.</strong> Petiole ve Postpetiole'ye 
+                    sahiptirler (iki bağlantı parçası). Kimi türleri iğneye sahiptir. Bazı türlerinde de 
+                    dikenler vardır. Pupaları kozasızdır. Antenlerinde topuzlar mevcuttur.
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">2️⃣</span>
+                        <span class="feature-text">Petiole + Postpetiole</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📡</span>
+                        <span class="feature-text">Anten topuzu var</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💉</span>
+                        <span class="feature-text">Kimi türlerde iğne var</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚔️</span>
+                        <span class="feature-text">Bazı türlerde diken var</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">❌</span>
+                        <span class="feature-text">Pupa kozasız</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: myrmicinae_petiole_postpetiole.jpg -->
+                            <img src="myrmicinae_petiole_postpetiole.jpg" class="term-image">
+                            <div class="image-caption">Myrmicinae - Petiole + Postpetiole</div>
+                        </div>
+                    </div>
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: myrmicinae_anten_topuzu.jpg -->
+                            <img src="myrmicinae_anten_topuzu.jpg" class="term-image">
+                            <div class="image-caption">Myrmicinae - Anten Topuzu</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Myrmicinae Cinsleri (22 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Aphaenogaster</div>
+                        <div class="genus-tag">Cardiocondyla</div>
+                        <div class="genus-tag">Carebara</div>
+                        <div class="genus-tag">Crematogaster</div>
+                        <div class="genus-tag">Formicoxenus</div>
+                        <div class="genus-tag">Harpagoxenus</div>
+                        <div class="genus-tag">Leptothorax</div>
+                        <div class="genus-tag">Manica</div>
+                        <div class="genus-tag">Messor</div>
+                        <div class="genus-tag">Monomorium</div>
+                        <div class="genus-tag">Myrmecina</div>
+                        <div class="genus-tag">Myrmica</div>
+                        <div class="genus-tag">Myrmoxenus</div>
+                        <div class="genus-tag">Oxyopomyrmex</div>
+                        <div class="genus-tag">Pheidole</div>
+                        <div class="genus-tag">Solenopsis</div>
+                        <div class="genus-tag">Stenamma</div>
+                        <div class="genus-tag">Strongylognathus</div>
+                        <div class="genus-tag">Strumigenys</div>
+                        <div class="genus-tag">Temnothorax</div>
+                        <div class="genus-tag">Tetramorium</div>
+                        <div class="genus-tag">Trichomyrmex</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 4: PONERINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">4</div>
+                        <div class="subfamily-name-group">
+                            <h3>Ponerinae</h3>
+                            <p class="subfamily-latin">Ponerinae Lepeletier, 1835</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-moderate">
+                        ⭐ Nadir
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    Pek yaygın olmayan bir altfamilyadır. <strong>Bedenleri ince uzundur</strong>, uzun ve 
+                    kalın dikdörtgeni andıran şekilde bir petioleleri vardır. Koza örerler, iğneleri vardır 
+                    fakat spineleri yoktur. Anten topuzları vardır. <strong>Cryptic</strong>tirler yani yer 
+                    üstünde görünmeden ışıktan uzak yaşarlar.
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">〰️</span>
+                        <span class="feature-text">İnce uzun beden</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">▭</span>
+                        <span class="feature-text">Uzun dikdörtgen petiole</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧵</span>
+                        <span class="feature-text">Koza örer</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💉</span>
+                        <span class="feature-text">İğne var</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📡</span>
+                        <span class="feature-text">Anten topuzu var</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌑</span>
+                        <span class="feature-text">Cryptic yaşam (yer altı)</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: ponerinae_petiole.jpg -->
+                            <img src="ponerinae_petiole.jpg" class="term-image">
+                            <div class="image-caption">Ponerinae - Uzun Dikdörtgen Petiole</div>
+                        </div>
+                    </div>
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: ponerinae_beden_yapisi.jpg -->
+                            <img src="ponerinae_beden_yapisi.jpg" class="term-image">
+                            <div class="image-caption">Ponerinae - İnce Uzun Beden Yapısı</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Ponerinae Cinsleri (4 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Cryptopone</div>
+                        <div class="genus-tag">Emeryopone</div>
+                        <div class="genus-tag">Hypoponera</div>
+                        <div class="genus-tag">Ponera</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 5: DORYLINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">5</div>
+                        <div class="subfamily-name-group">
+                            <h3>Dorylinae</h3>
+                            <p class="subfamily-latin">Dorylinae Leach, 1815</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-rare">
+                        🔴 Çok Nadir
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    <strong>Ordu türlerinden oluşan bir altfamilyadır.</strong> Yani tamamen göçebe yaşarlar. 
+                    Cryptic'tirler. <em>Dorylus</em> cinsinin petiolesi vardır, anten topuzu yoktur; 
+                    <em>Aenictus</em> ve <em>Parasyscia</em> cinslerininse Postpetiolesi ve anten topuzu 
+                    vardır. Thoraxları tamamen birbirine kaynaşmıştır ve düzdür. Genelde işçilerin gözleri yoktur.
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-box-title">
+                        <span>⚠️</span> Özel Not
+                    </div>
+                    <p>
+                        Kendileri çok çok nadirdir, göçebe yaşadıkları için esaret altında beslenemezler, 
+                        cryptic oldukları için yüzeyde görülemezler. Uçuş gibi istisna durumlarda prensine 
+                        denk gelebilirsiniz veya işçileri yuva ağzında görebilirsiniz. Aklınızda tutmanız 
+                        veya bilmeniz gereken bir alt familya değiller, bulan birisini görme ihtimaliniz 
+                        yok denecek kadar az.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🚶</span>
+                        <span class="feature-text">Göçebe yaşam (ordu karıncaları)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌑</span>
+                        <span class="feature-text">Cryptic (gizli yaşam)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">👁️‍🗨️</span>
+                        <span class="feature-text">Genelde gözsüz işçiler</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔗</span>
+                        <span class="feature-text">Thorax kaynaşmış</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">❌</span>
+                        <span class="feature-text">Koza örmez</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🚫</span>
+                        <span class="feature-text">Esaret altında beslenemez</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: dorylinae_genel_gorunum.jpg -->
+                            <img src="dorylinae_genel_gorunum.jpg" class="term-image">
+                            <div class="image-caption">Dorylinae - Genel Görünüm (Ordu Karıncası)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Dorylinae Cinsleri (3 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Aenictus</div>
+                        <div class="genus-tag">Dorylus</div>
+                        <div class="genus-tag">Parasyscia</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 6: AMBLYOPONINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">6</div>
+                        <div class="subfamily-name-group">
+                            <h3>Amblyoponinae</h3>
+                            <p class="subfamily-latin">Amblyoponinae Forel, 1893</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-rare">
+                        🔴 Çok Nadir
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    Fazlasıyla nadir bir altfamilyadır. Ülkemizdeki tek üyesi <strong><em>Stigmatomma</em> 
+                    cinsidir</strong>. Kare kafası, uzun çenesi ve ince bedeni ile farklı bir cins ile 
+                    karıştırılamayacak kadar spesifiktir. Gasterin ilk tergiti ile yarısına kadar kaynaşmış 
+                    halde olan petioleden kendilerini belli ederler.
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">⬛</span>
+                        <span class="feature-text">Kare kafa yapısı</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🦷</span>
+                        <span class="feature-text">Uzun çeneler</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">〰️</span>
+                        <span class="feature-text">İnce beden</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔗</span>
+                        <span class="feature-text">Petiole gaster ile kaynaşmış</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧵</span>
+                        <span class="feature-text">Koza örer</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💉</span>
+                        <span class="feature-text">İğne var</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: amblyoponinae_stigmatomma.jpg -->
+                            <img src="amblyoponinae_stigmatomma.jpg" class="term-image">
+                            <div class="image-caption">Amblyoponinae - Stigmatomma (Kare Kafa)</div>
+                        </div>
+                    </div>
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: amblyoponinae_petiole_kaynasmis.jpg -->
+                            <img src="amblyoponinae_petiole_kaynasmis.jpg" class="term-image">
+                            <div class="image-caption">Amblyoponinae - Petiole Gaster Kaynaşması</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Amblyoponinae Cinsleri (1 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Stigmatomma</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SUBFAMILY 7: PROCERATIINAE ==================== -->
+            <div class="subfamily-section">
+                <div class="subfamily-header">
+                    <div class="subfamily-title-group">
+                        <div class="subfamily-number">7</div>
+                        <div class="subfamily-name-group">
+                            <h3>Proceratiinae</h3>
+                            <p class="subfamily-latin">Proceratiinae Emery, 1895</p>
+                        </div>
+                    </div>
+                    <div class="rarity-badge rarity-rare">
+                        🔴 Çok Nadir
+                    </div>
+                </div>
+
+                <div class="subfamily-description">
+                    Tıpkı Amblyoponinae gibi bu altfamilya da fazlasıyla nadirdir ve oldukça spesifik bir 
+                    yapıya sahip tek bir yerli cinsi vardır; <strong><em>Proceratium</em></strong>. 
+                    <strong>Parlak turuncu rengi</strong> ve abdomeninin 2. tergitinden itibaren başlayan 
+                    eğimi ile kendisini belli eder.
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🟠</span>
+                        <span class="feature-text">Parlak turuncu renk</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📐</span>
+                        <span class="feature-text">Abdomen 2. tergitte eğim</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">1️⃣</span>
+                        <span class="feature-text">Tek petiole</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💉</span>
+                        <span class="feature-text">İğne var</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧵</span>
+                        <span class="feature-text">Koza örer</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📡</span>
+                        <span class="feature-text">Anten topuzu var</span>
+                    </div>
+                </div>
+
+                <div class="subfamily-images">
+                    <div class="subfamily-image-card">
+                        <div class="term-image-container">
+                            <!-- FOTOĞRAF: proceratiinae_proceratium.jpg -->
+                            <img src="proceratiinae_proceratium.jpg" class="term-image">
+                            <div class="image-caption">Proceratiinae - Proceratium (Turuncu Renk)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genera-section">
+                    <h3 class="genera-title">
+                        <span>🧬</span> Türkiye'deki Proceratiinae Cinsleri (1 Cins)
+                    </h3>
+                    <div class="genera-grid">
+                        <div class="genus-tag">Proceratium</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== DIAGNOSIS SECTION ==================== -->
+        <section id="diagnosis" class="section">
+            <div class="diagnosis-container">
+                <div class="diagnosis-header">
+                    <h2>🔬 İnteraktif Teşhis Sistemi</h2>
+                    <p class="diagnosis-subtitle">
+                        Adım adım soruları yanıtlayarak elinizdeki karıncanın altfamilyasını bulun
+                    </p>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>İlerleme</span>
+                        <span id="progressText">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 1: PETIOLE COUNT -->
+                <div class="question-wrapper active" id="question1">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Soru 1</span>
+                            <h3 class="question-title">Petiole Sayısı</h3>
+                            <p class="question-description">
+                                Karıncanın <strong>thorax (göğüs)</strong> ile <strong>abdomen (karın)</strong> 
+                                arasındaki bağlantı parçalarına <strong>petiole</strong> denir. İkinci bağlantı 
+                                parçası varsa buna <strong>postpetiole</strong> denir. Kaç tane bağlantı parçası var?
+                            </p>
+                        </div>
+
+                        <div class="question-help">
+                            <div class="question-help-title">
+                                <span>💡</span> Referans Görseller
+                            </div>
+                            <div class="reference-images">
+                                <div class="reference-image-card">
+                                    <!-- FOTOĞRAF: tek_petiole_ornek.jpg -->
+                                    <img src="tek_petiole_ornek.jpg" class="term-image">
+                                </div>
+                                <div class="reference-image-card">
+                                    <!-- FOTOĞRAF: cift_petiole_postpetiole_ornek.jpg -->
+                                    <img src="cift_petiole_postpetiole_ornek.jpg" class="term-image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="options-container">
+                            <div class="option-card" data-question="q1" data-value="single">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">1️⃣</span>
+                                    <div class="option-text">
+                                        <h4>Tek Petiole</h4>
+                                        <p>Sadece bir bağlantı parçası var</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q1" data-value="double">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">2️⃣</span>
+                                    <div class="option-text">
+                                        <h4>İki Parça (Petiole + Postpetiole)</h4>
+                                        <p>Ardışık iki bağlantı parçası var</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 2: ACIDOPORE (Conditional) -->
+                <div class="question-wrapper" id="question2">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Soru 2</span>
+                            <h3 class="question-title">Asit Poru (Acidopore)</h3>
+                            <p class="question-description">
+                                Karıncanın <strong>abdomen sonunda</strong> ters huni şeklinde bir dizi kıl 
+                                tarafından korunan bir <strong>asit deliği</strong> var mı?
+                            </p>
+                        </div>
+
+                        <div class="question-help">
+                            <div class="question-help-title">
+                                <span>💡</span> Nasıl Anlarım?
+                            </div>
+                            <p>
+                                Bu yapı sadece Formicinae altfamilyasına özgüdür ve genellikle abdomenin en 
+                                ucunda kolayca görülebilir. Kıl halesi ile çevrili küçük bir açıklık şeklindedir.
+                            </p>
+                            <div class="reference-images">
+                                <div class="reference-image-card">
+                                    <!-- FOTOĞRAF: asit_poru_var_ornek.jpg -->
+                                    <img src="asit_poru_var_ornek.jpg" class="term-image">
+                                </div>
+                                <div class="reference-image-card">
+                                    <!-- FOTOĞRAF: asit_poru_yok_ornek.jpg -->
+                                    <img src="asit_poru_yok_ornek.jpg" class="term-image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="options-container">
+                            <div class="option-card" data-question="q2" data-value="yes">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">✅</span>
+                                    <div class="option-text">
+                                        <h4>Var</h4>
+                                        <p>Asit poru açıkça görünüyor</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q2" data-value="no">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">❌</span>
+                                    <div class="option-text">
+                                        <h4>Yok</h4>
+                                        <p>Asit poru görünmüyor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 3: PETIOLE VISIBILITY (Conditional) -->
+                <div class="question-wrapper" id="question3">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Soru 3</span>
+                            <h3 class="question-title">Petiole Görünürlüğü</h3>
+                            <p class="question-description">
+                                Petiole (bağlantı parçası) <strong>belirgin ve açıkça görülebiliyor</strong> mu, 
+                                yoksa <strong>abdomen tarafından gizlenmiş</strong> mi?
+                            </p>
+                        </div>
+
+                        <div class="question-help">
+                            <div class="question-help-title">
+                                <span>💡</span> Referans Görseller
+                            </div>
+                            <div class="reference-images">
+                                <div class="reference-image-card">
+                                    <!-- FOTOĞRAF: petiole_belirgin_ornek.jpg -->
+                                    <img src="petiole_belirgin_ornek.jpg" class="term-image">
+                                </div>
+                                <div class="reference-image-card">
+                                    <!-- FOTOĞRAF: petiole_gizli_ornek.jpg -->
+                                    <img src="petiole_gizli_ornek.jpg" class="term-image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="options-container">
+                            <div class="option-card" data-question="q3" data-value="visible">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">👁️</span>
+                                    <div class="option-text">
+                                        <h4>Belirgin</h4>
+                                        <p>Petiole açıkça görünüyor</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q3" data-value="hidden">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">🫥</span>
+                                    <div class="option-text">
+                                        <h4>Gizli</h4>
+                                        <p>Abdomen petioleyi kapatıyor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 4: SPECIAL FEATURES (Conditional) -->
+                <div class="question-wrapper" id="question4">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Soru 4</span>
+                            <h3 class="question-title">Özel Morfik Özellikler</h3>
+                            <p class="question-description">
+                                Karıncada aşağıdaki özel özelliklerden hangisi var? (En yakın olanı seçin)
+                            </p>
+                        </div>
+
+                        <div class="options-container">
+                            <div class="option-card" data-question="q4" data-value="square_head">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">⬛</span>
+                                    <div class="option-text">
+                                        <h4>Kare Kafa + Uzun Çene</h4>
+                                        <p>Stigmatomma benzeri</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q4" data-value="orange">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">🟠</span>
+                                    <div class="option-text">
+                                        <h4>Parlak Turuncu Renk</h4>
+                                        <p>Proceratium benzeri</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q4" data-value="eyeless">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">🫣</span>
+                                    <div class="option-text">
+                                        <h4>Gözsüz + Göçebe</h4>
+                                        <p>Ordu karıncaları</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q4" data-value="slender">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">〰️</span>
+                                    <div class="option-text">
+                                        <h4>İnce Uzun Beden</h4>
+                                        <p>Ponerinae benzeri</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-card" data-question="q4" data-value="none">
+                                <div class="option-checkmark">✓</div>
+                                <div class="option-header">
+                                    <span class="option-icon">🐜</span>
+                                    <div class="option-text">
+                                        <h4>Hiçbiri / Belirsiz</h4>
+                                        <p>Standart görünüm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION BUTTONS -->
+                <div class="navigation-buttons">
+                    <button class="nav-btn nav-btn-prev" id="btnPrev" disabled>
+                        ⬅️ Önceki Soru
+                    </button>
+                    <button class="nav-btn nav-btn-next" id="btnNext" disabled>
+                        Sonraki Soru ➡️
+                    </button>
+                </div>
+
+                <!-- RESULT CONTAINER -->
+                <div class="result-container" id="resultContainer">
+                    <div class="result-confetti">🎉</div>
+                    <h2 class="result-title">Teşhis Tamamlandı!</h2>
+                    <div class="result-subfamily" id="resultSubfamilyName"></div>
+
+                    <div class="result-card">
+                        <div class="result-section">
+                            <h3>📋 Altfamilya Özellikleri</h3>
+                            <div class="result-features" id="resultFeatures"></div>
+                        </div>
+
+                        <div class="result-section">
+                            <h3>🧬 Türkiye'deki Cinsler</h3>
+                            <div class="result-genera" id="resultGenera"></div>
+                        </div>
+
+                        <div class="result-section">
+                            <h3>📊 Yaygınlık Durumu</h3>
+                            <p id="resultRarity"></p>
+                        </div>
+
+                        <div class="result-section">
+                            <h3>ℹ️ Ek Bilgiler</h3>
+                            <p id="resultDescription"></p>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button class="btn btn-primary" onclick="resetDiagnosis()">
+                            🔄 Yeni Teşhis Yap
+                        </button>
+                        <a href="#guide" class="btn btn-secondary">
+                            📖 Rehbere Dön
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                🐜 Türkiye Karınca Altfamilyaları Rehberi
+            </p>
+            <p class="footer-credits">
+                Kaynak: <a href="https://karincaciftligim.com" style="color: var(--accent-yellow); text-decoration: none;">Karınca Çiftliğim Forum</a> • 
+                Orijinal Yazar: Enesersoy45 • 
+                2025
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ==================== DATABASE ====================
+        const subfamilyDatabase = {
+            formicinae: {
+                name: "Formicinae",
+                latin: "Formicinae Latreille, 1809",
+                icon: "🌲",
+                description: "Ülkenin en yaygın altfamilyalarından biri. Asit poruna sahip tek altfamilyadır. Tek petioleye sahiptirler ve petioleleri genelde belirgindir.",
+                features: [
+                    "Asit poru var (özgü)",
+                    "Tek petiole (belirgin)",
+                    "Çoğu koza örer",
+                    "Anten topuzu yok",
+                    "İğne bulundurmaz",
+                    "Bazı türlerde diken var"
+                ],
+                genera: ["Camponotus", "Cataglyphis", "Colobopsis", "Formica", "Lasius", "Lepisiota", 
+                         "Nylanderia", "Paratrechina", "Plagiolepis", "Polyergus", "Prenolepis", 
+                         "Proformica", "Rossomyrmex"],
+                rarity: "⭐⭐⭐ Çok Yaygın",
+                rarityLevel: "common"
+            },
+            dolichoderinae: {
+                name: "Dolichoderinae",
+                latin: "Dolichoderinae Forel, 1878",
+                icon: "👻",
+                description: "Tapinoma dışında Türkiye'de pek yaygın değildir. Tek petioleye sahiptirler ve petioleleri gizlidir. Abdomenin ilk tergiti genelde petioleyi kapatır.",
+                features: [
+                    "Tek petiole (gizli)",
+                    "Petiole abdomen tarafından kapatılır",
+                    "Koza öremez",
+                    "Diken ve iğne yok",
+                    "Abdomen sonunda çentik var"
+                ],
+                genera: ["Bothriomyrmex", "Dolichoderus", "Linepithema", "Liometopum", "Tapinoma"],
+                rarity: "⭐⭐ Orta Yaygınlık",
+                rarityLevel: "moderate"
+            },
+            myrmicinae: {
+                name: "Myrmicinae",
+                latin: "Myrmicinae Lepeletier, 1835",
+                icon: "👑",
+                description: "Türkiye'nin en kalabalık altfamilyasıdır. Petiole ve Postpetiole'ye sahiptirler. Kimi türleri iğneye sahiptir. Bazı türlerinde de dikenler vardır.",
+                features: [
+                    "Petiole + Postpetiole (2 parça)",
+                    "Anten topuzu var",
+                    "Kimi türlerde iğne var",
+                    "Bazı türlerde diken var",
+                    "Pupa kozasız"
+                ],
+                genera: ["Aphaenogaster", "Cardiocondyla", "Carebara", "Crematogaster", "Formicoxenus",
+                         "Harpagoxenus", "Leptothorax", "Manica", "Messor", "Monomorium", "Myrmecina",
+                         "Myrmica", "Myrmoxenus", "Oxyopomyrmex", "Pheidole", "Solenopsis", "Stenamma",
+                         "Strongylognathus", "Strumigenys", "Temnothorax", "Tetramorium", "Trichomyrmex"],
+                rarity: "⭐⭐⭐ En Kalabalık Altfamilya",
+                rarityLevel: "common"
+            },
+            ponerinae: {
+                name: "Ponerinae",
+                latin: "Ponerinae Lepeletier, 1835",
+                icon: "🗡️",
+                description: "Pek yaygın olmayan bir altfamilyadır. Bedenleri ince uzundur, uzun ve kalın dikdörtgeni andıran şekilde bir petioleleri vardır. Cryptic yaşam tarzına sahiptirler.",
+                features: [
+                    "İnce uzun beden",
+                    "Uzun dikdörtgen petiole",
+                    "Koza örer",
+                    "İğne var, diken yok",
+                    "Anten topuzu var",
+                    "Cryptic yaşam (yer altı)"
+                ],
+                genera: ["Cryptopone", "Emeryopone", "Hypoponera", "Ponera"],
+                rarity: "⭐ Nadir",
+                rarityLevel: "rare"
+            },
+            dorylinae: {
+                name: "Dorylinae",
+                latin: "Dorylinae Leach, 1815",
+                icon: "⚔️",
+                description: "Ordu türlerinden oluşan bir altfamilyadır. Tamamen göçebe yaşarlar. Çok çok nadirdir, göçebe yaşadıkları için esaret altında beslenemezler.",
+                features: [
+                    "Göçebe yaşam (ordu karıncaları)",
+                    "Cryptic (gizli yaşam)",
+                    "Genelde gözsüz işçiler",
+                    "Thorax kaynaşmış",
+                    "Koza örmez",
+                    "Esaret altında beslenemez"
+                ],
+                genera: ["Aenictus", "Dorylus", "Parasyscia"],
+                rarity: "🔴 Çok Nadir",
+                rarityLevel: "very-rare"
+            },
+            amblyoponinae: {
+                name: "Amblyoponinae",
+                latin: "Amblyoponinae Forel, 1893",
+                icon: "🔲",
+                description: "Fazlasıyla nadir bir altfamilyadır. Ülkemizdeki tek üyesi Stigmatomma cinsidir. Kare kafası, uzun çenesi ve ince bedeni ile çok karakteristiktir.",
+                features: [
+                    "Kare kafa yapısı",
+                    "Uzun çeneler",
+                    "İnce beden",
+                    "Petiole gaster ile kaynaşmış",
+                    "Koza örer",
+                    "İğne var, diken yok"
+                ],
+                genera: ["Stigmatomma"],
+                rarity: "🔴 Çok Nadir",
+                rarityLevel: "very-rare"
+            },
+            proceratiinae: {
+                name: "Proceratiinae",
+                latin: "Proceratiinae Emery, 1895",
+                icon: "🟠",
+                description: "Fazlasıyla nadir ve spesifik bir altfamilyadır. Sadece Proceratium cinsi bulunur. Parlak turuncu rengi ve abdomeninin 2. tergitinden eğimi ile karakterizedir.",
+                features: [
+                    "Parlak turuncu renk",
+                    "Abdomen 2. tergitte eğim",
+                    "Tek petiole",
+                    "İğne var, diken yok",
+                    "Koza örer",
+                    "Anten topuzu var"
+                ],
+                genera: ["Proceratium"],
+                rarity: "🔴 Çok Nadir",
+                rarityLevel: "very-rare"
+            }
+        };
+
+        // ==================== STATE MANAGEMENT ====================
+        let currentQuestionIndex = 1;
+        let userAnswers = {};
+        const totalQuestions = 4;
+
+        // ==================== DOM ELEMENTS ====================
+        const questionWrappers = document.querySelectorAll('.question-wrapper');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const resultContainer = document.getElementById('resultContainer');
+
+        // ==================== OPTION CARD SELECTION ====================
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const question = this.dataset.question;
+                const value = this.dataset.value;
+
+                // Deselect all cards in this question
+                const sameQuestionCards = document.querySelectorAll(`[data-question="${question}"]`);
+                sameQuestionCards.forEach(c => c.classList.remove('selected'));
+
+                // Select this card
+                this.classList.add('selected');
+
+                // Store answer
+                userAnswers[question] = value;
+
+                // Enable next button
+                btnNext.disabled = false;
+            });
+        });
+
+        // ==================== NAVIGATION ====================
+        btnNext.addEventListener('click', () => {
+            const nextQuestion = determineNextQuestion();
+            
+            if (nextQuestion === 'result') {
+                showResult();
+            } else {
+                goToQuestion(nextQuestion);
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentQuestionIndex > 1) {
+                goToQuestion(currentQuestionIndex - 1);
+            }
+        });
+
+        function goToQuestion(questionNum) {
+            // Hide all questions
+            questionWrappers.forEach(q => q.classList.remove('active'));
+
+            // Show target question
+            document.getElementById(`question${questionNum}`).classList.add('active');
+
+            // Update state
+            currentQuestionIndex = questionNum;
+
+            // Update progress
+            updateProgress();
+
+            // Update buttons
+            btnPrev.disabled = (currentQuestionIndex === 1);
+            
+            // Check if current question is answered
+            const currentQuestionId = `q${currentQuestionIndex}`;
+            btnNext.disabled = !userAnswers[currentQuestionId];
+
+            // Scroll to top
+            window.scrollTo({ top: document.getElementById('diagnosis').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function determineNextQuestion() {
+            const q1 = userAnswers.q1;
+            const q2 = userAnswers.q2;
+            const q3 = userAnswers.q3;
+
+            if (currentQuestionIndex === 1) {
+                // From Q1: Petiole count
+                if (q1 === 'single') {
+                    return 2; // Ask about acidopore
+                } else {
+                    return 'result'; // Myrmicinae
+                }
+            } else if (currentQuestionIndex === 2) {
+                // From Q2: Acidopore
+                if (q2 === 'yes') {
+                    return 'result'; // Formicinae
+                } else {
+                    return 3; // Ask about petiole visibility
+                }
+            } else if (currentQuestionIndex === 3) {
+                // From Q3: Petiole visibility
+                if (q3 === 'hidden') {
+                    return 'result'; // Dolichoderinae
+                } else {
+                    return 4; // Ask about special features
+                }
+            } else if (currentQuestionIndex === 4) {
+                // From Q4: Always go to result
+                return 'result';
+            }
+
+            return 'result';
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestionIndex / totalQuestions) * 100;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = Math.round(progress) + '%';
+        }
+
+        // ==================== RESULT LOGIC ====================
+        function showResult() {
+            const subfamily = determineSubfamily();
+            const data = subfamilyDatabase[subfamily];
+
+            // Hide questions and navigation
+            questionWrappers.forEach(q => q.classList.remove('active'));
+            document.querySelector('.navigation-buttons').style.display = 'none';
+            progressFill.style.width = '100%';
+            progressText.textContent = '100%';
+
+            // Populate result
+            document.getElementById('resultSubfamilyName').textContent = data.icon + ' ' + data.name;
+            document.getElementById('resultDescription').textContent = data.description;
+            document.getElementById('resultRarity').innerHTML = `<strong>${data.rarity}</strong>`;
+
+            // Features
+            const featuresHTML = data.features.map(f => `
+                <div class="result-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>${f}</span>
+                </div>
+            `).join('');
+            document.getElementById('resultFeatures').innerHTML = featuresHTML;
+
+            // Genera
+            const generaHTML = data.genera.map(g => `
+                <div class="result-genus">${g}</div>
+            `).join('');
+            document.getElementById('resultGenera').innerHTML = generaHTML;
+
+            // Show result
+            resultContainer.classList.add('show');
+
+            // Scroll to result
+            setTimeout(() => {
+                window.scrollTo({ top: resultContainer.offsetTop - 100, behavior: 'smooth' });
+            }, 100);
+        }
+
+        function determineSubfamily() {
+            const q1 = userAnswers.q1;
+            const q2 = userAnswers.q2;
+            const q3 = userAnswers.q3;
+            const q4 = userAnswers.q4;
+
+            // Logic tree
+            if (q1 === 'double') {
+                return 'myrmicinae';
+            }
+
+            if (q2 === 'yes') {
+                return 'formicinae';
+            }
+
+            if (q3 === 'hidden') {
+                return 'dolichoderinae';
+            }
+
+            // Special features (Q4)
+            if (q4 === 'square_head') {
+                return 'amblyoponinae';
+            } else if (q4 === 'orange') {
+                return 'proceratiinae';
+            } else if (q4 === 'eyeless') {
+                return 'dorylinae';
+            } else {
+                return 'ponerinae'; // Default for slender or none
+            }
+        }
+
+        function resetDiagnosis() {
+            // Reset state
+            currentQuestionIndex = 1;
+            userAnswers = {};
+
+            // Reset UI
+            questionWrappers.forEach(q => q.classList.remove('active'));
+            document.getElementById('question1').classList.add('active');
+            document.querySelector('.navigation-buttons').style.display = 'flex';
+            resultContainer.classList.remove('show');
+
+            // Reset selections
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Reset progress
+            updateProgress();
+
+            // Reset buttons
+            btnPrev.disabled = true;
+            btnNext.disabled = true;
+
+            // Scroll to diagnosis
+            window.scrollTo({ top: document.getElementById('diagnosis').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        // ==================== SMOOTH SCROLL FOR NAV ====================
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // ==================== INTERSECTION OBSERVER FOR NAV ====================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            updateProgress();
+            console.log('🐜 Karınca Rehberi yüklendi!');
+        });
+    </script>
+</body>
+</html>
